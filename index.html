@@ -1,0 +1,2573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>班昭高原生态农庄 · 高原之上 生态有方</title>
+
+    <!-- ===== CDN 资源 ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ============================================================
+        原有样式保持不变，新增模态框样式
+        ============================================================ */
+        :root {
+            --primary: #2D5A27;
+            --primary-light: #3D7A35;
+            --primary-dark: #1E3D1A;
+            --gold: #D4A84B;
+            --gold-light: #E8C97A;
+            --brown: #8B7355;
+            --brown-light: #A88B6E;
+            --cream: #F5F0E8;
+            --cream-dark: #E8E0D4;
+            --white: #FFFFFF;
+            --gray: #6B6B6B;
+            --text: #2C2C2C;
+            --text-light: #5A5A5A;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.18);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --font: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            --header-height: 72px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 640px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+        }
+
+        .section-subtitle .highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 16px rgba(45, 90, 39, 0.25);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(45, 90, 39, 0.35);
+            background: var(--primary-light);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 8px 28px rgba(45, 90, 39, 0.25);
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            box-shadow: 0 4px 16px rgba(212, 168, 75, 0.35);
+        }
+
+        .btn-gold:hover {
+            background: #C49A3A;
+            box-shadow: 0 8px 28px rgba(212, 168, 75, 0.45);
+        }
+
+        /* ============================================================
+        Header
+        ============================================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.88);
+            box-shadow: 0 2px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: var(--primary);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .logo-sub {
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: var(--text-light);
+            letter-spacing: 0.06em;
+            margin-left: 4px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav a:hover::after,
+        .nav a.active::after {
+            width: 100%;
+        }
+
+        .nav a:hover {
+            color: var(--primary);
+        }
+
+        .nav .btn-nav {
+            padding: 8px 22px;
+            font-size: 0.8rem;
+            border-radius: 50px;
+            background: var(--gold);
+            color: var(--white);
+            font-weight: 600;
+            box-shadow: 0 2px 12px rgba(212, 168, 75, 0.3);
+        }
+
+        .nav .btn-nav::after {
+            display: none;
+        }
+
+        .nav .btn-nav:hover {
+            background: #C49A3A;
+            transform: translateY(-1px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: var(--text);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        /* ============================================================
+        Hero Swiper
+        ============================================================ */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            margin-top: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero .swiper-slide {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-slide-1 {
+            background: linear-gradient(135deg, #1a3a1a 0%, #2d5a27 40%, #4a7a3a 100%);
+        }
+        .hero-slide-2 {
+            background: linear-gradient(135deg, #3d2b1a 0%, #6b4f3a 40%, #8b7355 100%);
+        }
+        .hero-slide-3 {
+            background: linear-gradient(135deg, #1a2a3a 0%, #2a4a5a 40%, #3a6a7a 100%);
+        }
+
+        .hero-slide-1::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hero-slide-2::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M20 0l3.5 10.5H34l-8.5 6.5 3.5 10.5L20 20l-8.5 7.5L15 17 6.5 10.5h10.5z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hero-slide-3::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            padding: 0 24px;
+            max-width: 780px;
+        }
+
+        .hero-content .sub-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .hero-content h1 {
+            font-size: 4.2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            text-shadow: 0 4px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-content h1 .highlight {
+            color: var(--gold-light);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+            margin-bottom: 32px;
+            text-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-content .btn {
+            font-size: 1rem;
+            padding: 16px 44px;
+        }
+
+        .hero .swiper-pagination-bullet {
+            background: var(--white);
+            opacity: 0.5;
+        }
+
+        .hero .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: var(--gold);
+        }
+
+        /* ============================================================
+        Stats
+        ============================================================ */
+        .stats {
+            background: var(--white);
+            padding: 48px 0;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+            position: relative;
+            z-index: 2;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+
+        .stats-item .number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+        }
+
+        .stats-item .number .plus {
+            color: var(--gold);
+        }
+
+        .stats-item .label {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* ============================================================
+        三大入口
+        ============================================================ */
+        .entry-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 8px;
+        }
+
+        .entry-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px 32px 36px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            display: block;
+        }
+
+        .entry-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gold);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .entry-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .entry-card:hover::before {
+            opacity: 1;
+        }
+
+        .entry-card .icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .entry-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 6px;
+        }
+
+        .entry-card .desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .entry-card .link-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .entry-card .link-arrow:hover {
+            gap: 14px;
+            color: var(--gold);
+        }
+
+        /* ============================================================
+        生态农品
+        ============================================================ */
+        .product-section {
+            background: var(--white);
+        }
+
+        .product-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .product-tabs .tab-btn {
+            padding: 10px 28px;
+            border-radius: 50px;
+            border: 2px solid var(--cream-dark);
+            background: transparent;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .product-tabs .tab-btn:hover,
+        .product-tabs .tab-btn.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            display: none;
+        }
+
+        .product-grid.active {
+            display: grid;
+        }
+
+        .product-card {
+            background: var(--cream);
+            border-radius: var(--radius);
+            padding: 28px 24px 24px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .product-card:hover {
+            border-color: var(--gold-light);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .product-card .thumb {
+            height: 180px;
+            border-radius: var(--radius-sm);
+            background: var(--cream-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.6rem;
+            margin-bottom: 16px;
+        }
+
+        .product-card h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .product-card .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0 14px;
+        }
+
+        .product-card .tags span {
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: var(--gold-light);
+            color: var(--primary-dark);
+        }
+
+        .product-card .tags span.green {
+            background: #C8E6C9;
+            color: #1E3D1A;
+        }
+
+        .product-card .tags span.brown {
+            background: #D7CCC8;
+            color: #4E342E;
+        }
+
+        .trace-section {
+            margin-top: 56px;
+            padding: 40px 0 20px;
+            border-top: 2px dashed var(--cream-dark);
+        }
+
+        .trace-title {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 28px;
+        }
+
+        .trace-path {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px 4px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .trace-step {
+            padding: 10px 22px;
+            border-radius: 50px;
+            background: var(--white);
+            border: 2px solid var(--cream-dark);
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .trace-step:hover {
+            border-color: var(--gold);
+            background: var(--gold-light);
+            color: var(--primary-dark);
+        }
+
+        .trace-arrow {
+            font-size: 1.4rem;
+            color: var(--gold);
+            font-weight: 300;
+        }
+
+        .product-actions {
+            text-align: center;
+            margin-top: 36px;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================================
+        文旅研学
+        ============================================================ */
+        .research-section {
+            background: var(--cream);
+        }
+
+        .research-intro {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .research-intro .sub {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .route-select {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .route-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 36px 32px 32px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .route-card:hover {
+            border-color: var(--gold-light);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .route-card .icon-big {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .route-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .route-card .meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin: 4px 0 16px;
+        }
+
+        .route-card .meta span {
+            display: inline-block;
+            background: var(--cream);
+            padding: 2px 14px;
+            border-radius: 20px;
+            margin-right: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .route-card .btn {
+            margin-top: 12px;
+        }
+
+        .timeline-wrap {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px 36px;
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+            display: none;
+        }
+
+        .timeline-wrap.active {
+            display: block;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            bottom: 8px;
+            width: 3px;
+            background: var(--cream-dark);
+            border-radius: 4px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 16px 0 16px 28px;
+            border-left: 3px solid transparent;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 22px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 3px var(--gold);
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover::before {
+            background: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary);
+        }
+
+        .timeline-item .time {
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+        }
+
+        .timeline-item .title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--primary-dark);
+            margin: 2px 0 4px;
+        }
+
+        .timeline-item .detail {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .timeline-item.open .detail {
+            max-height: 400px;
+            opacity: 1;
+            padding-top: 8px;
+        }
+
+        .timeline-item .detail .game {
+            display: inline-block;
+            background: var(--cream);
+            padding: 2px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 4px 4px 4px 0;
+        }
+
+        .timeline-item .detail .reward {
+            display: inline-block;
+            background: var(--gold-light);
+            padding: 2px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .day-route {
+            display: none;
+            margin-top: 20px;
+            gap: 32px;
+        }
+
+        .day-route.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .day-block {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .day-block .day-label {
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .day-block h4 {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+        }
+
+        .day-block ul {
+            list-style: none;
+        }
+
+        .day-block ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--cream-dark);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.92rem;
+        }
+
+        .day-block ul li:last-child {
+            border-bottom: none;
+        }
+
+        .day-block ul li .emoji {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .link-route {
+            margin-top: 60px;
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px 36px;
+            box-shadow: var(--shadow);
+        }
+
+        .link-route h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .link-route .sub {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 32px;
+        }
+
+        .link-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .link-item {
+            background: var(--cream);
+            border-radius: var(--radius-sm);
+            padding: 24px 24px 28px;
+        }
+
+        .link-item .label {
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .link-item h4 {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin: 4px 0 12px;
+        }
+
+        .link-item .steps {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 2px;
+        }
+
+        .link-item .steps .dot {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            background: var(--white);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text);
+            border: 1px solid var(--cream-dark);
+        }
+
+        .link-item .steps .arrow {
+            color: var(--gold);
+            font-weight: 300;
+            font-size: 1.1rem;
+        }
+
+        .link-item .tags {
+            margin-top: 14px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .link-item .tags span {
+            padding: 2px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: var(--gold-light);
+            color: var(--primary-dark);
+        }
+
+        /* ============================================================
+        科普课堂
+        ============================================================ */
+        .science-section {
+            background: var(--white);
+        }
+
+        .science-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-bottom: 32px;
+        }
+
+        .science-card {
+            background: var(--cream);
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid transparent;
+            display: block;
+        }
+
+        .science-card:hover {
+            border-color: var(--gold-light);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .science-card .icon {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .science-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .science-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .video-area {
+            margin-top: 32px;
+            background: var(--cream);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .video-area h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .video-area video {
+            width: 100%;
+            max-height: 500px;
+            border-radius: var(--radius-sm);
+            background: #000;
+        }
+
+        .video-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .video-links a {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 50px;
+            background: var(--white);
+            border: 1px solid var(--cream-dark);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            color: var(--primary);
+        }
+
+        .video-links a:hover {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .calendar-wrap {
+            background: var(--cream);
+            border-radius: var(--radius);
+            padding: 32px 36px;
+            margin-top: 40px;
+        }
+
+        .calendar-wrap .cal-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .calendar-wrap .cal-title span {
+            background: var(--gold);
+            color: var(--white);
+            padding: 2px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .calendar-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .calendar-list .event {
+            background: var(--white);
+            padding: 16px 20px;
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .calendar-list .event .date {
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--gold);
+        }
+
+        .calendar-list .event .name {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        /* ============================================================
+        关于我们
+        ============================================================ */
+        .about-section {
+            background: var(--cream);
+        }
+
+        .about-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: stretch;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+
+        .about-text .tagline {
+            font-size: 1.05rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .about-text .team-tags {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 16px 0 24px;
+        }
+
+        .about-text .team-tags span {
+            padding: 6px 20px;
+            border-radius: 50px;
+            background: var(--white);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--primary);
+            border: 1px solid var(--cream-dark);
+        }
+
+        .about-contact {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .about-contact .item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .about-contact .item:last-child {
+            border-bottom: none;
+        }
+
+        .about-contact .item .ico {
+            font-size: 1.4rem;
+            width: 36px;
+            text-align: center;
+        }
+
+        .about-contact .item .info {
+            font-weight: 500;
+        }
+
+        .about-contact .item .info small {
+            display: block;
+            font-weight: 400;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .about-contact .btn {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* ============================================================
+        Footer
+        ============================================================ */
+        .footer {
+            background: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 48px 0 32px;
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .footer-brand .logo {
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .footer-brand .logo-icon {
+            background: var(--gold);
+        }
+
+        .footer-brand .slogan {
+            font-size: 0.95rem;
+            font-style: italic;
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-top: 12px;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            display: block;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            padding: 4px 0;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 32px;
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        /* ============================================================
+        响应式
+        ============================================================ */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .entry-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .science-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .route-select {
+                grid-template-columns: 1fr;
+            }
+
+            .day-route.active {
+                grid-template-columns: 1fr;
+            }
+
+            .link-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.96);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--cream-dark);
+                box-shadow: var(--shadow);
+            }
+
+            .nav.open {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stats-item:last-child {
+                grid-column: span 2;
+            }
+
+            .entry-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .science-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline-wrap {
+                padding: 24px 16px;
+            }
+
+            .timeline {
+                padding-left: 20px;
+            }
+
+            .timeline-item {
+                padding-left: 16px;
+            }
+
+            .timeline-item::before {
+                left: -20px;
+                width: 12px;
+                height: 12px;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .product-tabs .tab-btn {
+                padding: 6px 16px;
+                font-size: 0.8rem;
+            }
+
+            .link-route {
+                padding: 24px 16px;
+            }
+
+            .calendar-wrap {
+                padding: 24px 16px;
+            }
+
+            .trace-path {
+                gap: 4px 2px;
+            }
+
+            .trace-step {
+                padding: 6px 14px;
+                font-size: 0.75rem;
+            }
+
+            .trace-arrow {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .stats-item:last-child {
+                grid-column: span 1;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .section-padding {
+                padding: 48px 0;
+            }
+        }
+
+        /* ============================================================
+        工具类 & 动画
+        ============================================================ */
+        .text-gold {
+            color: var(--gold);
+        }
+        .text-primary {
+            color: var(--primary);
+        }
+        .text-center {
+            text-align: center;
+        }
+        .mt-16 {
+            margin-top: 16px;
+        }
+        .mt-24 {
+            margin-top: 24px;
+        }
+        .mb-16 {
+            margin-bottom: 16px;
+        }
+        .gap-8 {
+            gap: 8px;
+        }
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toggle-detail {
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            padding: 4px 0;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .toggle-detail:hover {
+            color: var(--primary);
+        }
+
+        .toggle-detail .arrow {
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .timeline-item.open .toggle-detail .arrow {
+            transform: rotate(180deg);
+        }
+
+        .img-placeholder {
+            background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            color: var(--text-light);
+            border-radius: var(--radius-sm);
+            min-height: 120px;
+        }
+
+        .route-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .route-tabs .rtab {
+            padding: 10px 28px;
+            border-radius: 50px;
+            border: 2px solid var(--cream-dark);
+            background: transparent;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .route-tabs .rtab:hover,
+        .route-tabs .rtab.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* ============================================================
+        模态框样式 (新增)
+        ============================================================ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: var(--white);
+            border-radius: var(--radius);
+            max-width: 500px;
+            width: 90%;
+            padding: 40px 32px;
+            box-shadow: var(--shadow-hover);
+            position: relative;
+            animation: modalIn 0.3s ease;
+        }
+
+        @keyframes modalIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            transition: var(--transition);
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal-box h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .modal-box p {
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--cream-dark);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-family: var(--font);
+            transition: var(--transition);
+            background: var(--cream);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: var(--white);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .form-submit:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 90, 39, 0.3);
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .form-success .icon {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .form-success h4 {
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+
+        .form-success p {
+            color: var(--text-light);
+        }
+
+        .form-error {
+            color: #b33;
+            font-size: 0.85rem;
+            margin-top: 4px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================================================
+    HEADER
+    ============================================================ -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <span class="logo-icon">🌱</span>
+                班昭<span>生态农庄</span>
+                <span class="logo-sub">BANZHAO ECO FARM</span>
+            </a>
+
+            <nav class="nav" id="nav">
+                <a href="#home" class="active">首页</a>
+                <a href="#products">农品</a>
+                <a href="#research">研学</a>
+                <a href="#science">科普</a>
+                <a href="#about">关于</a>
+                <!-- 导航栏立即预约改为电话 -->
+                <a href="tel:0836-XXXXXXX" class="btn-nav">立即预约</a>
+            </nav>
+
+            <div class="hamburger" id="hamburger" aria-label="菜单">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    HERO - SWIPER
+    ============================================================ -->
+    <section class="hero" id="home">
+        <div class="swiper heroSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide hero-slide-1">
+                    <div class="hero-content" data-aos="fade-up" data-aos-duration="800">
+                        <div class="sub-label">班昭高原生态农庄</div>
+                        <h1>高原之上<br /><span class="highlight">生态有方</span></h1>
+                        <p>让土地恢复生命力 · 在自然中学习</p>
+                        <a href="#research" class="btn btn-gold">探索生态之旅 →</a>
+                    </div>
+                </div>
+                <div class="swiper-slide hero-slide-2">
+                    <div class="hero-content" data-aos="fade-up" data-aos-duration="800">
+                        <div class="sub-label">生态循环 · 永续发展</div>
+                        <h1>让土地<br /><span class="highlight">恢复生命力</span></h1>
+                        <p>种养循环 · 零废弃 · 高原智慧</p>
+                        <a href="#products" class="btn btn-gold">了解生态农品 →</a>
+                    </div>
+                </div>
+                <div class="swiper-slide hero-slide-3">
+                    <div class="hero-content" data-aos="fade-up" data-aos-duration="800">
+                        <div class="sub-label">沉浸式研学 · 自然课堂</div>
+                        <h1>在自然中<br /><span class="highlight">学习成长</span></h1>
+                        <p>从一株植物，认识一片土地</p>
+                        <a href="#research" class="btn btn-gold">查看研学路线 →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    STATS
+    ============================================================ -->
+    <section class="stats" data-aos="fade-up">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stats-item">
+                    <div class="number">100<span class="plus">+</span></div>
+                    <div class="label">生态植物资源</div>
+                </div>
+                <div class="stats-item">
+                    <div class="number">20<span class="plus">+</span></div>
+                    <div class="label">研学互动项目</div>
+                </div>
+                <div class="stats-item">
+                    <div class="number">365<span class="plus">天</span></div>
+                    <div class="label">自然生态体验</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    三大入口
+    ============================================================ -->
+    <section class="section-padding" style="background: var(--cream);">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">开启你的<span class="text-gold">高原生态之旅</span></div>
+            <div class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                探索自然 · 品味生态 · 收获知识
+            </div>
+
+            <div class="entry-cards">
+                <a href="#products" class="entry-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="icon">🌱</span>
+                    <h3>生态农品</h3>
+                    <p class="desc">高原蔬果 · 生态畜牧 · 土壤改良</p>
+                    <span class="link-arrow">进入 →</span>
+                </a>
+                <a href="#research" class="entry-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="icon">🧪</span>
+                    <h3>研学体验</h3>
+                    <p class="desc">半日认知 · 一日深度 · 联动路线</p>
+                    <span class="link-arrow">进入 →</span>
+                </a>
+                <a href="#science" class="entry-card" data-aos="fade-up" data-aos-delay="300">
+                    <span class="icon">📚</span>
+                    <h3>科普课堂</h3>
+                    <p class="desc">植物图鉴 · 土壤知识 · 活动日历</p>
+                    <span class="link-arrow">进入 →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    生态农品
+    ============================================================ -->
+    <section class="product-section section-padding" id="products">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">来自高原的<span class="text-gold">生态馈赠</span></div>
+            <div class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                每一份产品，都承载着土地的呼吸与循环的智慧
+            </div>
+
+            <div class="product-tabs" data-aos="fade-up">
+                <button class="tab-btn active" data-tab="tab1">高原蔬果</button>
+                <button class="tab-btn" data-tab="tab2">生态畜牧</button>
+                <button class="tab-btn" data-tab="tab3">土壤改良</button>
+            </div>
+
+            <div class="product-grid active" id="tab1" data-aos="fade-up">
+                <div class="product-card">
+                    <div class="thumb">🥔</div>
+                    <h4>班昭黑美人紫土豆</h4>
+                    <div class="tags"><span>✓ 原生态种植</span><span class="green">✓ 高原环境孕育</span><span class="brown">✓ 循环农业</span></div>
+                    <p style="color:var(--text-light);font-size:0.9rem;">高原昼夜温差大，紫土豆花青素含量丰富，口感软糯香甜。</p>
+                </div>
+                <div class="product-card">
+                    <div class="thumb">🥬</div>
+                    <h4>高原甘蓝</h4>
+                    <div class="tags"><span>✓ 有机种植</span><span class="green">✓ 高原冷凉蔬菜</span><span class="brown">✓ 零农残</span></div>
+                    <p style="color:var(--text-light);font-size:0.9rem;">源自海拔3000米纯净土壤，脆甜多汁，富含维生素。</p>
+                </div>
+                <div class="product-card">
+                    <div class="thumb">🌾</div>
+                    <h4>高原燕麦</h4>
+                    <div class="tags"><span>✓ 生态种植</span><span class="green">✓ 优质膳食纤维</span><span class="brown">✓ 绿色食品</span></div>
+                    <p style="color:var(--text-light);font-size:0.9rem;">高原日照充足，燕麦颗粒饱满，营养价值高。</p>
+                </div>
+            </div>
+
+            <div class="product-grid" id="tab2" data-aos="fade-up">
+                <div class="product-card">
+                    <div class="thumb">🐔</div>
+                    <h4>高原藏鸡</h4>
+                    <div class="tags"><span>✓ 自然散养</span><span class="green">✓ 生态循环</span><span class="brown">✓ 高蛋白</span></div>
+                    <p style="color:var(--text-light);font-size:0.9rem;">藏鸡在林下自由觅食，肉质紧实，营养丰富，是高原生态养殖的典范。</p>
+                </div>
+                <div class="product-card">
+                    <div class="thumb">🐷</div>
+                    <h4>本土黑猪</h4>
+                    <div class="tags"><span>✓ 传统养殖</span><span class="green">✓ 生态循环</span><span class="brown">✓ 有机饲料</span></div>
+                    <p style="color:var(--text-light);font-size:0.9rem;">本土黑猪以有机谷物和野菜为食，肉质鲜美，肥而不腻。</p>
+                </div>
+                <div class="product-card">
+                    <div class="thumb">🥚</div>
+                    <h4>藏鸡蛋</h4>
+                    <div class="tags"><span>✓ 散养鸡蛋</span><span class="green">✓ 高营养</span><span class="brown">✓ 生态认证</span></div>
+                    <p style="color:var(--text-light);font-size:0.9rem;">藏鸡蛋蛋黄饱满，富含优质蛋白和微量元素。</p>
+                </div>
+            </div>
+
+            <div class="product-grid" id="tab3" data-aos="fade-up">
+                <div class="product-card">
+                    <div class="thumb">🧪</div>
+                    <h4>有机肥 · 堆肥</h4>
+                    <div class="tags"><span>✓ 秸秆发酵</span><span class="green">✓ 牛羊粪原料</span><span class="brown">✓ 土壤修复</span></div>
+                    <p style="color:var(--text-light);font-size:0.9rem;">采用高原低温堆肥技术，将畜禽粪便与植物残体转化为优质有机肥。</p>
+                </div>
+                <div class="product-card">
+                    <div class="thumb">🌍</div>
+                    <h4>土壤改良剂</h4>
+                    <div class="tags"><span>✓ 生态修复</span><span class="green">✓ 有机质提升</span><span class="brown">✓ 可持续</span></div>
+                    <p style="color:var(--text-light);font-size:0.9rem;">针对高原土壤特点，科学配比，改善土壤结构，提升肥力。</p>
+                </div>
+                <div class="product-card">
+                    <div class="thumb">💧</div>
+                    <h4>生态循环系统</h4>
+                    <div class="tags"><span>✓ 零废弃</span><span class="green">✓ 闭环生态</span><span class="brown">✓ 低碳</span></div>
+                    <p style="color:var(--text-light);font-size:0.9rem;">种养结合，畜禽粪便→有机肥→蔬果种植→生态循环，实现零废弃。</p>
+                </div>
+            </div>
+
+            <div class="trace-section" data-aos="fade-up">
+                <div class="trace-title">🌿 产品溯源 · 从土地到餐桌</div>
+                <div class="trace-path">
+                    <span class="trace-step">🌱 土地</span>
+                    <span class="trace-arrow">→</span>
+                    <span class="trace-step">🌾 生态种养</span>
+                    <span class="trace-arrow">→</span>
+                    <span class="trace-step">🧑‍🌾 人工培育</span>
+                    <span class="trace-arrow">→</span>
+                    <span class="trace-step">✅ 绿色产品</span>
+                    <span class="trace-arrow">→</span>
+                    <span class="trace-step" style="background:var(--gold-light);border-color:var(--gold);">❤️ 消费者</span>
+                </div>
+            </div>
+
+            <!-- 购买入口仍跳转抖音（保持不变） -->
+            <div class="product-actions" data-aos="fade-up">
+                <a href="https://www.douyin.com/" target="_blank" class="btn btn-gold">🛒 立即购买</a>
+                <a href="https://www.douyin.com/" target="_blank" class="btn btn-outline">进入商城 →</a>
+                <span style="font-size:0.8rem;color:var(--text-light);display:block;width:100%;margin-top:4px;">视频号小店 · 抖音商城 即将上线</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    文旅研学
+    ============================================================ -->
+    <section class="research-section section-padding" id="research">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">探索自然 · <span class="text-gold">沉浸式研学</span></div>
+            <div class="research-intro" data-aos="fade-up" data-aos-delay="100">
+                <p class="sub">“从一株植物，认识一片土地”</p>
+            </div>
+
+            <div class="route-select" data-aos="fade-up">
+                <div class="route-card">
+                    <span class="icon-big">🌱</span>
+                    <h3>半日生态认知</h3>
+                    <div class="meta">
+                        <span>⏱ 3小时</span>
+                        <span>👨‍👩‍👧 亲子</span>
+                        <span>🏫 小学研学</span>
+                    </div>
+                    <p style="color:var(--text-light);margin-bottom:12px;">植物识别 · 循环种养 · 有机肥制作 · 土壤检测</p>
+                    <button class="btn btn-outline" onclick="showRoute('half')">查看路线</button>
+                </div>
+                <div class="route-card">
+                    <span class="icon-big">🌄</span>
+                    <h3>一日深度体验</h3>
+                    <div class="meta">
+                        <span>⏱ 7小时</span>
+                        <span>👨‍👩‍👧‍👦 学校团队</span>
+                        <span>🏕 家庭游客</span>
+                    </div>
+                    <p style="color:var(--text-light);margin-bottom:12px;">半日核心体验 + 藏式午餐 + 采摘 + 草本手作</p>
+                    <button class="btn btn-outline" onclick="showRoute('full')">查看路线</button>
+                </div>
+            </div>
+
+            <div class="route-tabs" data-aos="fade-up">
+                <button class="rtab active" data-route="half">半日路线</button>
+                <button class="rtab" data-route="full">一日路线</button>
+            </div>
+
+            <div class="timeline-wrap active" id="route-half" data-aos="fade-up">
+                <h4 style="font-size:1.3rem;color:var(--primary-dark);margin-bottom:20px;">🌱 半日 · 生态认知研学路线</h4>
+                <div class="timeline">
+                    <div class="timeline-item open">
+                        <div class="time">09:00 – 09:20</div>
+                        <div class="title">农庄入口集合 · 小昭开营破冰</div>
+                        <div class="detail">
+                            <p>IP卡通展板签到，发放任务卡，介绍全天行程。</p>
+                            <span class="game">🎯 破冰互动</span>
+                            <span class="reward">🎁 任务卡</span>
+                        </div>
+                        <button class="toggle-detail" onclick="toggleDetail(this)">展开 <span class="arrow">▾</span></button>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">09:20 – 10:00</div>
+                        <div class="title">点位1：原生植物识别区</div>
+                        <div class="detail">
+                            <p><strong>讲解内容：</strong>高原本土草本、格桑花、燕麦、紫土豆植株、高原耐旱植物特性。</p>
+                            <p><strong>🎮 高原植物寻宝赛：</strong>分组领取植物图鉴卡，在田间寻找对应植株拍照打卡，集齐5种原生植物获胜。</p>
+                            <span class="game">🏷 小草灵卡通贴纸</span>
+                            <span class="reward">🎯 互动目标：认识高原适生植物，记录特征</span>
+                        </div>
+                        <button class="toggle-detail" onclick="toggleDetail(this)">展开 <span class="arrow">▾</span></button>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">10:00 – 10:40</div>
+                        <div class="title">点位2：循环种养参观区</div>
+                        <div class="detail">
+                            <p><strong>讲解内容：</strong>藏鸡、本土黑猪养殖，种养循环模式——畜禽粪便制作有机肥滋养高原蔬果，零废弃生态闭环。</p>
+                            <p><strong>🎮 生态链条连连看：</strong>道具：黑猪、有机肥、紫土豆、藏鸡、土壤卡通卡片，小组接力配对完整循环链。</p>
+                            <span class="game">🏷 阿土卡通徽章</span>
+                            <span class="reward">📝 任务卡填空：写出种养循环3个环节</span>
+                        </div>
+                        <button class="toggle-detail" onclick="toggleDetail(this)">展开 <span class="arrow">▾</span></button>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">10:40 – 11:20</div>
+                        <div class="title">点位3：有机肥手工制作工坊</div>
+                        <div class="detail">
+                            <p><strong>讲解内容：</strong>秸秆、牛羊粪、植物残体发酵原理，高原低温堆肥技巧，低碳生态理念。</p>
+                            <p><strong>🎮 堆肥材料分拣小能手：</strong>混合秸秆、石子、塑料垃圾、牛羊粪模拟原料池，限时分拣可发酵/不可发酵物料。</p>
+                            <span class="game">🏷 蚯蚓仔卡通印章</span>
+                            <span class="reward">🧪 动手实操：每人制作迷你发酵堆肥小盒带走</span>
+                        </div>
+                        <button class="toggle-detail" onclick="toggleDetail(this)">展开 <span class="arrow">▾</span></button>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">11:20 – 12:00</div>
+                        <div class="title">点位4：土壤检测小实验室</div>
+                        <div class="detail">
+                            <p><strong>讲解内容：</strong>高原土壤酸碱度、有机质简易检测，不同地块土壤差异对蔬果生长影响。</p>
+                            <p><strong>🎮 土宝土壤猜猜猜：</strong>3份不同农田土壤样本，小组通过手感、颜色、简易试纸检测，判断哪块土地适合种植班昭黑美人紫土豆。</p>
+                            <span class="game">🏷 土宝卡通贴纸</span>
+                            <span class="reward">🏆 答对小组获得土宝贴纸</span>
+                        </div>
+                        <button class="toggle-detail" onclick="toggleDetail(this)">展开 <span class="arrow">▾</span></button>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">12:00</div>
+                        <div class="title">🎓 结营分享 · 颁发研学证书</div>
+                        <div class="detail">
+                            <p>回收任务卡，颁发研学小证书，返程。</p>
+                            <span class="reward">📜 研学小证书</span>
+                        </div>
+                        <button class="toggle-detail" onclick="toggleDetail(this)">展开 <span class="arrow">▾</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-route" id="route-full" data-aos="fade-up">
+                <div class="day-block">
+                    <div class="day-label">🌅 上午</div>
+                    <h4>生态认知课堂 + 四大核心体验</h4>
+                    <ul>
+                        <li><span class="emoji">🕘</span> 09:00–09:20 开营破冰 · 发放任务卡、采摘篮、手作材料包</li>
+                        <li><span class="emoji">🌿</span> 09:20–10:00 原生植物识别区 · 植物寻宝赛</li>
+                        <li><span class="emoji">🐷</span> 10:00–10:40 循环种养参观区 · 生态链条连连看</li>
+                        <li><span class="emoji">🧪</span> 10:40–11:20 有机肥手工制作工坊 · 堆肥材料分拣</li>
+                        <li><span class="emoji">🌍</span> 11:20–12:00 土壤检测小实验室 · 土宝土壤猜猜猜</li>
+                    </ul>
+                </div>
+                <div class="day-block">
+                    <div class="day-label">🌇 下午</div>
+                    <h4>藏式午餐 + 采摘 + 手作</h4>
+                    <ul>
+                        <li><span class="emoji">🍽️</span> 12:00–13:00 <strong>藏式生态午餐</strong><br />自产紫土豆 · 高原甘蓝 · 藏鸡蛋（食育讲解）</li>
+                        <li><span class="emoji">🧺</span> 13:00–14:30 <strong>高原蔬果采摘</strong><br />班昭黑美人紫土豆、高原蔬菜采摘称重，可自费带走<br />
+                            <span style="font-size:0.8rem;color:var(--gold);">🎮 紫土豆称重大比拼</span>
+                        </li>
+                        <li><span class="emoji">🌸</span> 14:30–16:00 <strong>高原草本手作工坊</strong><br />格桑花拓印 · 草本香包DIY<br />
+                            <span style="font-size:0.8rem;color:var(--gold);">🎮 植物拓印创意赛</span>
+                        </li>
+                        <li><span class="emoji">🎓</span> 16:00–16:30 <strong>研学总结</strong><br />任务卡成果展示 · 集体合影 · 颁发完整研学结业证书</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="link-route" data-aos="fade-up" data-aos-delay="100">
+                <h3>🗺️ “生态 + 红色 + 非遗” 联动路线</h3>
+                <p class="sub">生态教育 · 红色文化 · 非遗体验 三位一体</p>
+
+                <div class="link-grid">
+                    <div class="link-item">
+                        <div class="label">🚩 单日轻联动</div>
+                        <h4>县城中小学短途研学</h4>
+                        <div class="steps">
+                            <span class="dot">🌱 班昭生态农庄</span>
+                            <span class="arrow">→</span>
+                            <span class="dot">🔴 贺龙旧居</span>
+                            <span class="arrow">→</span>
+                            <span class="dot">🔨 河坡非遗园区</span>
+                        </div>
+                        <div class="tags">
+                            <span>生态研学</span>
+                            <span>红色寻访</span>
+                            <span>非遗体验</span>
+                        </div>
+                        <p style="font-size:0.85rem;color:var(--text-light);margin-top:12px;">半日农庄研学 + 红色旧址参观 + 迷你锻打体验</p>
+                    </div>
+                    <div class="link-item">
+                        <div class="label">🏔️ 两日全域深度联动</div>
+                        <h4>外地高校实践团 · 大型中学研学</h4>
+                        <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
+                            <div><strong style="color:var(--gold);">Day 1</strong> 班昭农庄一日完整生态研学 + 沙马乡红泉谷长征徒步、红色党课</div>
+                            <div><strong style="color:var(--gold);">Day 2</strong> 河坡非遗全天体验（藏纸制作、小型金属锻打）+ 高原山林原生植物徒步总结</div>
+                        </div>
+                        <div class="tags">
+                            <span>生态研学</span>
+                            <span>长征徒步</span>
+                            <span>藏纸制作</span>
+                            <span>金属锻打</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================
+    科普课堂
+    ============================================================ -->
+    <section class="science-section section-padding" id="science">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">🌿 生态<span class="text-gold">科普课堂</span></div>
+            <div class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                用知识守护自然 · 让探索永不止步
+            </div>
+
+            <div class="science-grid">
+                <a href="https://www.baidu.com/s?wd=高原植物图鉴" target="_blank" class="science-card" data-aos="fade-up">
+                    <span class="icon">🌱</span>
+                    <h4>植物标本图鉴</h4>
+                    <p>高原原生植物 · 格桑花 · 燕麦 · 紫土豆</p>
+                </a>
+                <a href="https://www.baidu.com/s?wd=高原土壤" target="_blank" class="science-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="icon">🪨</span>
+                    <h4>土壤岩石知识</h4>
+                    <p>高原土壤酸碱度 · 有机质 · 岩石地貌</p>
+                </a>
+                <a href="#video-area" class="science-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="icon">🎥</span>
+                    <h4>植物百科视频</h4>
+                    <p>“高原植物小百科”系列短视频</p>
+                </a>
+            </div>
+
+            <div class="video-area" id="video-area" data-aos="fade-up">
+                <h4>🎬 科普视频精选</h4>
+                <video controls>
+    <source src="http://tjqwtk4c2.hb-bkt.clouddn.com/1.mp4" type="video/mp4" />
+    您的浏览器不支持视频播放，请更换现代浏览器。
+</video>
+                <div class="video-links">
+                    <a href="https://www.douyin.com/" target="_blank">📱 观看更多抖音科普</a>
+                    <a href="https://www.bilibili.com/" target="_blank">📺 B站合集</a>
+                    <a href="https://www.youtube.com/" target="_blank">🌍 YouTube频道</a>
+                </div>
+                <p style="color:var(--text-light);font-size:0.85rem;margin-top:12px;">* 示例视频，实际内容可替换为高原植物/生态科普视频</p>
+            </div>
+
+            <div class="calendar-wrap" data-aos="fade-up">
+                <div class="cal-title">
+                    📅 科普活动日历 <span>2026年8月</span>
+                </div>
+                <div class="calendar-list">
+                    <div class="event">
+                        <div class="date">8月5日</div>
+                        <div class="name">🌻 高原植物观察课</div>
+                    </div>
+                    <div class="event">
+                        <div class="date">8月12日</div>
+                        <div class="name">🧪 暑期生态课堂 · 土壤探秘</div>
+                    </div>
+                    <div class="event">
+                        <div class="date">8月20日</div>
+                        <div class="name">👨‍🌾 村民培训 · 有机堆肥技术</div>
+                    </div>
+                    <div class="event">
+                        <div class="date">8月26日</div>
+                        <div class="name">🌿 亲子自然观察日</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    关于我们
+    ============================================================ -->
+    <section class="about-section section-padding" id="about">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">关于<span class="text-gold">班昭生态农庄</span></div>
+
+            <div class="about-wrap">
+                <div class="about-text" data-aos="fade-up">
+                    <h3>地质 × 经管 · 跨学科实践团队</h3>
+                    <div class="tagline">高原之上，生态有方</div>
+                    <p>
+                        班昭高原生态农庄位于青藏高原东缘，依托独特的地质背景与生态资源，
+                        致力于打造集 <strong>生态种养、研学教育、科普传播、文旅体验</strong> 于一体的可持续发展示范基地。
+                    </p>
+                    <p>
+                        团队由地质学、生态学、经济学等多学科背景的实践者组成，
+                        将高原生态保护与乡村振兴相结合，探索人与自然和谐共生的路径。
+                    </p>
+                    <div class="team-tags">
+                        <span>🌍 地质背景</span>
+                        <span>📊 经管视角</span>
+                        <span>🌱 生态实践</span>
+                        <span>🎓 研学教育</span>
+                    </div>
+                    <p style="font-size:0.9rem;color:var(--text-light);">
+                        <strong>📍 地址：</strong>四川省甘孜藏族自治州 · 班昭高原生态农庄
+                    </p>
+                </div>
+
+                <div class="about-contact" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="item">
+                            <span class="ico">📍</span>
+                            <div class="info">农庄位置 <small>四川省甘孜藏族自治州 · 班昭村</small></div>
+                        </div>
+                        <div class="item">
+                            <span class="ico">📞</span>
+                            <div class="info">预约电话 <small>0836-XXXXXXX</small></div>
+                        </div>
+                        <div class="item">
+                            <span class="ico">✉️</span>
+                            <div class="info">合作咨询 <small>eco@banzhaofarm.com</small></div>
+                        </div>
+                        <div class="item">
+                            <span class="ico">🕐</span>
+                            <div class="info">开放时间 <small>09:00 – 17:00（需提前预约）</small></div>
+                        </div>
+                    </div>
+                    <!-- 立即预约改为电话 -->
+                    <a href="tel:0836-XXXXXXX" class="btn btn-gold">📋 立即预约</a>
+                    <!-- 合作入口改为弹出表单 -->
+                    <button class="btn btn-outline" style="margin-top:10px;width:100%;" onclick="openModal()">🤝 合作入口</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="#" class="logo" style="color:var(--white);">
+                        <span class="logo-icon">🌱</span>
+                        班昭<span style="color:var(--gold);">生态农庄</span>
+                    </a>
+                    <div class="slogan">高原之上，生态有方</div>
+                    <p>BANZHAO ECO FARM · 人与自然和谐共生</p>
+                </div>
+                <div class="footer-links">
+                    <h4>快速导航</h4>
+                    <a href="#home">首页</a>
+                    <a href="#products">生态农品</a>
+                    <a href="#research">文旅研学</a>
+                    <a href="#science">科普课堂</a>
+                </div>
+                <div class="footer-links">
+                    <h4>关于我们</h4>
+                    <a href="#about">团队介绍</a>
+                    <a href="#about">联系方式</a>
+                    <!-- 合作入口弹出表单 -->
+                    <a href="javascript:void(0)" onclick="openModal()">合作入口</a>
+                    <!-- 立即预约电话 -->
+                    <a href="tel:0836-XXXXXXX">立即预约</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2026 班昭高原生态农庄 · 高原之上，生态有方
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+    模态框（合作填表）
+    ============================================================ -->
+    <div class="modal-overlay" id="cooperationModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <h3>🤝 合作意向表</h3>
+            <p>请填写您的信息，我们将在24小时内与您取得联系。</p>
+
+            <form id="coopForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="name">您的姓名 *</label>
+                    <input type="text" id="name" placeholder="请输入姓名" required />
+                </div>
+                <div class="form-group">
+                    <label for="phone">联系电话 *</label>
+                    <input type="tel" id="phone" placeholder="请输入手机号" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">电子邮箱</label>
+                    <input type="email" id="email" placeholder="请输入邮箱（选填）" />
+                </div>
+                <div class="form-group">
+                    <label for="message">合作意向 / 留言 *</label>
+                    <textarea id="message" placeholder="请简要描述您的合作需求" required></textarea>
+                </div>
+                <div class="form-error" id="formError">请完整填写所有必填项。</div>
+                <button type="submit" class="form-submit">提交意向</button>
+            </form>
+
+            <div class="form-success" id="formSuccess">
+                <span class="icon">✅</span>
+                <h4>提交成功！</h4>
+                <p>感谢您的关注，我们会尽快与您取得联系。</p>
+                <button class="btn btn-outline" style="margin-top:16px;" onclick="closeModal()">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    SCRIPTS
+    ============================================================ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js">
+    </script>
+
+    <script>
+        // ===== AOS 初始化 =====
+        AOS.init({
+            duration: 700,
+            once: true,
+            offset: 40,
+            easing: 'ease-out-cubic'
+        });
+
+        // ===== Swiper 轮播 =====
+        const heroSwiper = new Swiper('.heroSwiper', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            speed: 1000,
+        });
+
+        // ===== Header 滚动效果 =====
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            if (scrollY > 60) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            lastScroll = scrollY;
+        });
+
+        // ===== 汉堡菜单 =====
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('open');
+        });
+
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('open');
+            });
+        });
+
+        // ===== 产品 Tab 切换 =====
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const productGrids = {
+            tab1: document.getElementById('tab1'),
+            tab2: document.getElementById('tab2'),
+            tab3: document.getElementById('tab3'),
+        };
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                Object.keys(productGrids).forEach(key => {
+                    productGrids[key].classList.remove('active');
+                });
+
+                const target = btn.getAttribute('data-tab');
+                if (productGrids[target]) {
+                    productGrids[target].classList.add('active');
+                }
+            });
+        });
+
+        // ===== 研学路线切换 =====
+        const routeTabs = document.querySelectorAll('.rtab');
+        const routeHalf = document.getElementById('route-half');
+        const routeFull = document.getElementById('route-full');
+
+        function showRoute(type) {
+            if (type === 'half') {
+                routeHalf.classList.add('active');
+                routeHalf.style.display = 'block';
+                routeFull.classList.remove('active');
+                routeFull.style.display = 'none';
+                routeTabs.forEach(t => t.classList.remove('active'));
+                document.querySelector('.rtab[data-route="half"]').classList.add('active');
+            } else {
+                routeHalf.classList.remove('active');
+                routeHalf.style.display = 'none';
+                routeFull.classList.add('active');
+                routeFull.style.display = 'grid';
+                routeTabs.forEach(t => t.classList.remove('active'));
+                document.querySelector('.rtab[data-route="full"]').classList.add('active');
+            }
+        }
+
+        routeFull.style.display = 'none';
+
+        routeTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const route = tab.getAttribute('data-route');
+                showRoute(route);
+            });
+        });
+
+        window.showRoute = showRoute;
+
+        // ===== 时间轴展开/收起 =====
+        function toggleDetail(btn) {
+            const item = btn.closest('.timeline-item');
+            if (item) {
+                item.classList.toggle('open');
+                const arrow = btn.querySelector('.arrow');
+                if (arrow) {
+                    arrow.style.transform = item.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+                }
+                btn.textContent = item.classList.contains('open') ? '收起 ▲' : '展开 ▾';
+                if (item.classList.contains('open')) {
+                    btn.innerHTML = '收起 <span class="arrow" style="display:inline-block;transform:rotate(180deg);">▾</span>';
+                } else {
+                    btn.innerHTML = '展开 <span class="arrow" style="display:inline-block;">▾</span>';
+                }
+            }
+        }
+
+        window.toggleDetail = toggleDetail;
+
+        // ===== 导航高亮 =====
+        const sections = document.querySelectorAll('section[id], .hero');
+        const navLinks = document.querySelectorAll('.nav a:not(.btn-nav)');
+
+        window.addEventListener('scroll', () => {
+            let current = 'home';
+            sections.forEach(section => {
+                const top = section.offsetTop - 120;
+                if (window.scrollY >= top) {
+                    current = section.id || 'home';
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+                if (current === 'home' && link.getAttribute('href') === '#home') {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // ===== 平滑滚动 =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ============================================================
+        // 模态框逻辑（合作入口）
+        // ============================================================
+        const modal = document.getElementById('cooperationModal');
+        const form = document.getElementById('coopForm');
+        const success = document.getElementById('formSuccess');
+        const error = document.getElementById('formError');
+
+        function openModal() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // 重置表单
+            form.style.display = 'block';
+            success.style.display = 'none';
+            error.style.display = 'none';
+            form.reset();
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // 点击背景关闭
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // 提交表单
+        function submitForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !phone || !message) {
+                error.style.display = 'block';
+                return;
+            }
+            error.style.display = 'none';
+
+            // 模拟提交成功
+            form.style.display = 'none';
+            success.style.display = 'block';
+
+            // 实际项目中可在此处用 AJAX 发送数据到后端
+            console.log('合作意向提交：', { name, phone, email: document.getElementById('email').value, message });
+        }
+
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+        window.submitForm = submitForm;
+
+        console.log('🌱 班昭高原生态农庄 · 高原之上，生态有方');
+    </script>
+
+</body>
+</html>
